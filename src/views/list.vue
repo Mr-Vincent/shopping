@@ -70,9 +70,19 @@ export default {
         this.filterColor = item;
       }
     },
-    handleOrderCost() {},
-    handleOrderSales() {},
-    handleOrderDefault() {}
+    handleOrderCost() {
+      if (this.order === "cost-desc") {
+        this.order = "cost-asc";
+      } else {
+        this.order = "cost-desc";
+      }
+    },
+    handleOrderSales() {
+      this.order = "sales";
+    },
+    handleOrderDefault() {
+      this.order = "";
+    }
   },
   computed: {
     list() {

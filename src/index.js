@@ -47,7 +47,8 @@ const store = new Vuex.Store({
 
     state: {
         productList: [],
-        cartList: []
+        cartList: [],
+        total:0
     },
     getters: {
         brands: state => {
@@ -76,6 +77,21 @@ const store = new Vuex.Store({
                     count: 1
                 })
             }
+            state.total++;
+        },
+        // 修改商品数量
+        editCartCount (state, payload) {
+            const product = state.cartList.find(item => item.id === payload.id);
+            product.count += payload.count;
+        },
+        // 删除商品
+        deleteCart (state, id) {
+            const index = state.cartList.findIndex(item => item.id === id);
+            state.cartList.splice(index, 1);
+        },
+        // 清空购物车
+        emptyCart (state) {
+            state.cartList = [];
         }
     },
     actions: {
@@ -86,6 +102,16 @@ const store = new Vuex.Store({
                 context.commit('setProductList', product_data);
             }, 500);
         },
+        // 购买
+        buy (context) {
+            // 真实环境应通过 ajax 提交购买请求后再清空购物列表
+            return new Promise(resolve=> {
+                setTimeout(() => {
+                    context.commit('emptyCart');
+                    resolve();
+                }, 500)
+            });
+        }
         
     }
 });

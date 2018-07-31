@@ -88,8 +88,7 @@
         
     }
     .product-main:hover{
-      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+      box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
       transform:scale(1.001);
-      transition-duration:.8s;
     }
 </style>

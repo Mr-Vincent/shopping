@@ -5,7 +5,7 @@
           <div class="header-menu">
               <router-link to="/cart" class="header-menu-cart">
                   购物车
-                  <span v-if="cartList.length">{{ cartList.length }}</span>
+                  <span v-if="cartList">{{ cartList }}</span>
               </router-link>
           </div>
       </div>
@@ -16,7 +16,7 @@
 export default {
   computed: {
     cartList() {
-      return this.$store.state.cartList;
+      return this.$store.state.total;
     }
   }
 };
